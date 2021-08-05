@@ -1,4 +1,4 @@
-from database.db import db
+from src.database.db import db
 
 class Polyline(db.Model):
     id = db.Column(db.Integer, primary_key=True)
