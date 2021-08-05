@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Document</title>
+    <style>
+        table,th,td{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h3> MY TEST AREA OR TEST LAB </h3>
+    {% if collection %}
+    <table>
+        <tr>
+        {% if keys %}
+            {% for key in keys %}
+                <th> {{key}} </th>
+            {% endfor %}
+        {% endif %}
+        </tr>
+        {% for data in collection %}
+        <tr>
+            {% if not data.town_id %}
+            {% if data.region_id %} <td> {{ data.region_id }} </td> {% endif %}
+            {% endif %}
+            {% if data.town_id %} <td> {{ data.town_id }} </td> {% endif %}
+            {% if data.line_id %} <td> {{ data.line_id }} </td> {% endif %}
+            {% if data.name %} <td> {{ data.name }} </td> {% endif %}
+            {% if data.town_id %}
+            {% if data.region_id %} <td> {{ data.region_id }} </td> {% endif %}
+            {% endif %}
+            {% if data.coordinates %} <td> {{ data.coordinates }} </td> {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <div>
+        <form action="{{ url_for('towns.towns') }}">
+            <p>Add Towns with fiber layings</p>
+            <input type="text" name="name" placeholder="name">
+            <input type="text" name="region" placeholder="eg. Ashanti Region">
+            <input type="submit" value="Add">
+        </form>
+    </div>
+</body>
+</html>
