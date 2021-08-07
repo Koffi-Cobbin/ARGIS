@@ -12,3 +12,7 @@ app.register_blueprint(region_blueprint, url_prefix="/regions")
 app.register_blueprint(town_blueprint, url_prefix="/towns")
 app.register_blueprint(line_blueprint, url_prefix="/lines")
   
+with app.app_context():
+    # Reset Database
+    db.drop_all()   # Comment out if you want to use flask_migrate
+    db.create_all()  # Comment out if you want to use flask_migrate
